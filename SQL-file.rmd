@@ -1,0 +1,43 @@
+SELECT student_name ent_name, gpa, school_lunch
+FROM students s
+LIMIT 5;
+
+SELECT COUNT(*) --student_name ent_name, gpa, school_lunch
+FROM students s 
+WHERE s.school_lunch = "Yes" AND gpa > 3.3
+ORDER BY gpa DESC;
+
+SELECT DISTINCT gpa
+FROM students 
+ORDER BY gpa DESC;
+
+
+SELECT grade_level, AVG(gpa)
+FROM students s 
+GROUP BY grade_level
+ORDER BY grade_level;
+
+SELECT grade_level, AVG(gpa) AS avg_gpa
+FROM students s 
+GROUP BY grade_level
+HAVING avg_gpa < 3.3
+ORDER BY grade_level;
+
+
+SELECT *
+FROM students;
+
+SELECT *
+FROM student_grades;
+
+
+SELECT students.id, students.student_name,
+	   student_grades.class_name, student_grades.final_grade 
+FROM students LEFT JOIN student_grades
+	ON students.id = student_grades.student_id ;
+
+
+
+
+
+
